@@ -35,6 +35,21 @@ const headers = {
 //         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0",
 // };
 
+// Classes for DIV containing all events:
+// Box-omzyfs-0 hzvomy
+
+// Classes for DIV containing single event:
+// Box-omzyfs-0 jyLLA
+
+// Potential selector for all events:
+// .hzvomy > .jyLLA
+
+// Date inside single event:
+// jmZufm
+
+// Attendance:
+// fQrgqr
+
 const cleanHTML = (htmlFile) => {
     const cleanedHTML = htmlFile
         .replace(/(<head[\w\W]+head>)/g, "")
@@ -68,11 +83,23 @@ const getPage = async (clubId) => {
     return cleanHTML(page);
 };
 
-const extractData = async () => {
-    const page = await getPage(IDs.AVA);
+const extractData = async (clubId) => {
+    const page = await getPage(clubId);
     const { document } = new JSDOM(page).window;
 
-    console.log(document.querySelector("h1").textContent);
+    const eventsDom = Array.from(document.querySelectorAll(".hzvomy > .jyLLA"));
+    const events = { clubId, eventList: [] };
+    eventsDom.forEach((event) => {
+        const eventObj = {
+            title: event.querySelector("h3").textContent,
+            date: event.querySelector(".jmZufm").textContent,
+            attendance: event.querySelector(".fQrgqr")
+                ? event.querySelector(".fQrgqr").textContent
+                : 0,
+        };
+        events.eventList.push(eventObj);
+    });
+    console.log(events);
 };
 
-extractData();
+extractData(IDs.AEDEN);
