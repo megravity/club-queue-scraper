@@ -10,6 +10,11 @@ const IDs = {
     AEDEN: 187744,
 };
 
+const headers = {
+    "User-Agent": "Chrome/79",
+    "Cache-Control": "no-cache",
+};
+
 // const headers = {
 //     Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
 //     "Accept-Encoding": "gzip, deflate, br",
@@ -55,10 +60,7 @@ const cleanHTML = (htmlFile) => {
 
 const getPage = async (clubId) => {
     const { data: page } = await axios.get(`https://ra.co/clubs/${clubId}`, {
-        headers: {
-            "User-Agent": "Chrome/79",
-            "Cache-Control": "no-cache",
-        },
+        headers,
         withCredentials: true,
     });
     return cleanHTML(page);
