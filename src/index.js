@@ -1,4 +1,5 @@
 import axios from "axios";
+import { JSDOM } from "jsdom";
 import fs from "fs";
 
 // AEDEN 187744
@@ -9,23 +10,23 @@ const IDs = {
     AEDEN: 187744,
 };
 
-const headers = {
-    Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Accept-Language": "en-US,en;q=0.5",
-    "Cache-Control": "no-cache",
-    Connection: "keep-alive",
-    Host: "js.refiner.io",
-    Pragma: "no-cache",
-    Referer: "https://ra.co/",
-    "Sec-Fetch-Dest": "iframe",
-    "Sec-Fetch-Mode": "navigate",
-    "Sec-Fetch-Site": "cross-site",
-    TE: "trailers",
-    "Upgrade-Insecure-Requests": "1",
-    "User-Agent":
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0",
-};
+// const headers = {
+//     Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+//     "Accept-Encoding": "gzip, deflate, br",
+//     "Accept-Language": "en-US,en;q=0.5",
+//     "Cache-Control": "no-cache",
+//     Connection: "keep-alive",
+//     Host: "js.refiner.io",
+//     Pragma: "no-cache",
+//     Referer: "https://ra.co/",
+//     "Sec-Fetch-Dest": "iframe",
+//     "Sec-Fetch-Mode": "navigate",
+//     "Sec-Fetch-Site": "cross-site",
+//     TE: "trailers",
+//     "Upgrade-Insecure-Requests": "1",
+//     "User-Agent":
+//         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/110.0",
+// };
 
 const cleanHTML = (htmlFile) => {
     const cleanedHTML = htmlFile
@@ -52,7 +53,7 @@ const cleanHTML = (htmlFile) => {
     return cleanedHTML;
 };
 
-const getData = async (clubId) => {
+const getPage = async (clubId) => {
     const { data: page } = await axios.get(`https://ra.co/clubs/${clubId}`, {
         headers: {
             "User-Agent": "Chrome/79",
@@ -60,9 +61,14 @@ const getData = async (clubId) => {
         },
         withCredentials: true,
     });
-    let cleanedString = cleanHTML(page);
-
-    console.log(cleanedString);
+    return cleanHTML(page);
 };
 
-getData(IDs.AEDEN);
+const extractData = async () => {
+    const page = await getPage(IDs.AVA);
+    const { document } = new JSDOM(page).window;
+
+    console.log(document.querySelector("h1").textContent);
+};
+
+extractData();
