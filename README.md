@@ -4,17 +4,22 @@
 
 ## Currently working on:
 
--   [ ] Setup express server
--   [ ] Create routes structure
--   [ ] Refactor project to fit server
+-   [ ] Research & implement scheduling
+-   [ ] Create DB structure
+-   [ ] Connect data to database
+-   [ ] Research server hosting - Online || Local?
 
 ## Backlog:
 
--   Create DB structure
--   Connect data to database
--   Roughly analyze gathered data
+-   [ ] Roughly analyze gathered data
+-   [ ] Refactor project to fit server
+-   [ ] Setup express server
+-   [ ] Create routes structure
+-   [ ] Create draft frontend
+-   [ ] Research multithreading & implement multithreading
 
 ## Done:
 
--   [x] Reterieving data from Resident Advisor
+-   [x] Retrieving data from Resident Advisor
 -   [x] Figuring out how the data is structured
+-   [x] Extract basic data from any https://ra.co/clubs/\<id\> page
