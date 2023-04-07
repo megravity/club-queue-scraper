@@ -15,6 +15,8 @@ const headers = {
     "Cache-Control": "no-cache",
 };
 
+// HEADERS extracted from request to https://ra.co/clubs/${clubId} via browser
+// ------------------
 // const headers = {
 //     Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
 //     "Accept-Encoding": "gzip, deflate, br",
