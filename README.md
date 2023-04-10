@@ -2,6 +2,8 @@
 
 ![Nighttime Berlin](https://images.unsplash.com/photo-1641531676310-12de33aaebbc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80)
 
+###### https://unsplash.com/photos/mltruZc-rNc - Norbert Braun
+
 #### A WIP project to scrape the internet for engagement with Berlin based events to calculate expected queue times
 
 ## Currently working on:
@@ -17,7 +19,7 @@
 -   [ ] Setup express server
 -   [ ] Create routes structure
 -   [ ] Create draft frontend
--   [ ] Research multithreading & implement multithreading
+-   [ ] Research & implement multithreading
 
 ## Done:
 
