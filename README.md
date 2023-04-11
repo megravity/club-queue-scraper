@@ -25,4 +25,4 @@
 
 -   [x] Retrieving data from Resident Advisor
 -   [x] Figuring out how the data is structured
--   [x] Extract basic data from any https://ra.co/clubs/\<id\> page
+-   [x] Extract basic data from any https://ra.co/clubs/<id\> page
