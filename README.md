@@ -8,9 +8,9 @@
 
 ## Currently working on:
 
--   [ ] Research & implement scheduling
--   [ ] Create DB structure & connect data to database
--   [ ] Research server hosting - Online || Local?
+-   [ ] Creating DB structure & connecting data to database
+-   [ ] Researching & implementing scheduling
+-   [ ] Researching server hosting
 
 ## Backlog:
 
